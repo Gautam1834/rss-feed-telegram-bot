@@ -41,11 +41,13 @@ def create_feed_checker(feed_url):
         entry = FEED.entries[0]
         if entry.id != db.get_link(feed_url).link:
                        # ↓ Edit this message as your needs.
-            #message1 = f"**{entry.title}**\n"
-            message2 = f"/mir1 {entry.link}"
-            message3 = f"/leech {entry.link}"
+            message = f"**{entry.title}**\n"
+            message1 = f"/mir1 {entry.link}"
+            message2 = f"/leech {entry.link}"
             try:
-                app.send_message(log_channel, message2, message3)
+                app.send_message(log_channel, message)
+                app.send_message(log_channel, message1)
+                app.send_message(log_channel, message2)
                 db.update_link(feed_url, entry.id)
             except FloodWait as e:
                 print(f"FloodWait: {e.x} seconds")
