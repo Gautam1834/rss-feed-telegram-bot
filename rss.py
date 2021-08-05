@@ -43,7 +43,7 @@ def create_feed_checker(feed_url):
                        # ↓ Edit this message as your needs.
             message = f"**{entry.title}**\n"
             message = f"/mir1 {entry.link}"
-            message = f"leech {entry.link}
+            message = f"leech {entry.link}"
             try:
                 app.send_message(log_channel, message)
                 db.update_link(feed_url, entry.id)
